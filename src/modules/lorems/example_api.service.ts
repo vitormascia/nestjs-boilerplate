@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
+import ms from "ms";
 
 import { AxiosApi } from "../../utils/axios.utils.js";
 import { AppConfig } from "../app/@types/app.interfaces.js";
@@ -9,7 +10,7 @@ export class ExampleApiService extends AxiosApi {
 	constructor(readonly configService: ConfigService<AppConfig, true>) {
 		super({
 			baseURL: configService.get("exampleAPI.baseURL", { infer: true }),
-			timeout: configService.get("exampleAPI.requestTimeout", { infer: true }),
+			timeout: ms(`${configService.get("exampleAPI.requestTimeout", { infer: true })} Seconds`),
 			headers: {
 				"Content-Type": "application/json",
 				Authorization: `Bearer ${configService.get("exampleAPI.key", { infer: true })}`,
