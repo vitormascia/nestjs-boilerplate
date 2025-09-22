@@ -22,7 +22,7 @@ export class LoremRolesGuard implements CanActivate {
 	constructor(
 		private reflector: Reflector,
 		@InjectRepository(LoremEntity)
-		private readonly playersRepository: Repository<LoremEntity>,
+		private readonly loremsRepository: Repository<LoremEntity>,
 	) { }
 
 	public async canActivate(context: ExecutionContext): Promise<boolean> {
@@ -52,7 +52,7 @@ export class LoremRolesGuard implements CanActivate {
 			throw new UnauthorizedException("User-Id Header has to be a valid UUID");
 		}
 
-		const lorem = await this.playersRepository.findOne({
+		const lorem = await this.loremsRepository.findOne({
 			select: {
 				id: true,
 				roles: true,
