@@ -12,7 +12,10 @@ import { LoremRole } from "../../guards/@types/roles.enums.js";
 import { LoremRolesGuard } from "../../guards/lorem_roles.guards.js";
 import { Something } from "./@types/lorems.interfaces.js";
 import { Lorem } from "./@types/lorems.types.js";
-import { CreateLoremBodyDto, GetSomethingQueryDto } from "./lorems.dtos.js";
+import {
+	CreateLoremBodyDto,
+	GetSomethingQueryDto,
+} from "./lorems.dtos.js";
 import { LoremsService } from "./lorems.service.js";
 
 @Controller("/lorems")
