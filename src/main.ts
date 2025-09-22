@@ -30,7 +30,14 @@ async function bootstrap(): Promise<void> {
 		{
 			rawBody: true,
 			logger: new ConsoleLogger({
-				logLevels: ["debug", "log", "verbose", "warn", "error", "fatal"],
+				logLevels: [
+					"debug",
+					"log",
+					"verbose",
+					"warn",
+					"error",
+					"fatal",
+				],
 				prefix: "NestJSBoilerplate",
 				timestamp: true,
 				colors: true,
