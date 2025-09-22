@@ -60,7 +60,14 @@ async function bootstrap(): Promise<void> {
 
 	app.enableCors({
 		origin: corsOrigin.split(COMMA),
-		methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+		methods: [
+			"GET",
+			"POST",
+			"PUT",
+			"PATCH",
+			"DELETE",
+			"OPTIONS",
+		],
 		credentials: true,
 	});
 
