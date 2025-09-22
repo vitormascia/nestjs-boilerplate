@@ -24,3 +24,9 @@ export class CreateLoremBodyDto {
 	@IsOptional()
 	roles?: Array<LoremRole>;
 }
+
+export class GetSomethingQueryDto {
+	@MaxLength(1_000)
+	@IsString()
+	description: string;
+}

@@ -86,6 +86,11 @@ async function bootstrap(): Promise<void> {
 			loremIpsum: configService.get("databases.redis.ttls.loremIpsum", { infer: true }),
 		},
 	};
+	const exampleAPIConfig = {
+		baseURL: configService.get("exampleAPI.baseURL", { infer: true }),
+		key: configService.get("exampleAPI.key", { infer: true }),
+		requestTimeout: configService.get("exampleAPI.requestTimeout", { infer: true }),
+	};
 
 	const logger = new Logger();
 
@@ -98,12 +103,14 @@ async function bootstrap(): Promise<void> {
 				postgres: postgresConfig,
 				redis: redisConfig,
 			},
+			exampleAPI: exampleAPIConfig,
 		});
 	} catch (error: any) {
 		logger.error("BOOTSTRAP_APP_ERROR", {
 			appConfig,
 			postgresConfig,
 			redisConfig,
+			exampleAPIConfig,
 			error: {
 				message: error.message,
 				stack: error.stack,

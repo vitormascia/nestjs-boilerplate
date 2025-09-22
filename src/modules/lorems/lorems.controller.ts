@@ -3,6 +3,7 @@ import {
 	Controller,
 	Get,
 	Post,
+	Query,
 	UseGuards,
 } from "@nestjs/common";
 
@@ -11,7 +12,7 @@ import { LoremRole } from "../../guards/@types/roles.enums.js";
 import { LoremRolesGuard } from "../../guards/lorem_roles.guards.js";
 import { Something } from "./@types/lorems.interfaces.js";
 import { Lorem } from "./@types/lorems.types.js";
-import { CreateLoremBodyDto } from "./lorems.dtos.js";
+import { CreateLoremBodyDto, GetSomethingQueryDto } from "./lorems.dtos.js";
 import { LoremsService } from "./lorems.service.js";
 
 @Controller("/lorems")
@@ -26,7 +27,7 @@ export class LoremsController {
 	@Get("/something")
 	@UseGuards(LoremRolesGuard)
 	@Roles(LoremRole.One)
-	public async getSomething(): Promise<Something> {
-		return this.loremsService.getSomething();
+	public async getSomething(@Query() query: GetSomethingQueryDto): Promise<Something> {
+		return this.loremsService.getSomething(query);
 	}
 }

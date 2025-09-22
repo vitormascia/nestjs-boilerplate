@@ -28,4 +28,9 @@ export interface AppConfig {
 			};
 		};
 	};
+	exampleAPI: {
+		baseURL: string;
+		key: string;
+		requestTimeout: number;
+	}
 }

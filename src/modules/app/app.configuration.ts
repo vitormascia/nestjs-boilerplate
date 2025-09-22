@@ -31,6 +31,11 @@ const configuration = (): AppConfig => {
 				},
 			},
 		},
+		exampleAPI: {
+			baseURL: process.env.EXAMPLE_API_BASE_URL!,
+			key: process.env.EXAMPLE_API_KEY!,
+			requestTimeout: +process.env.EXAMPLE_API_REQUEST_TIMEOUT_IN_SECONDS!,
+		},
 	};
 };
 

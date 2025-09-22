@@ -7,7 +7,7 @@ import { Repository } from "typeorm";
 
 import { Something } from "./@types/lorems.interfaces.js";
 import { Lorem } from "./@types/lorems.types.js";
-import { CreateLoremBodyDto } from "./lorems.dtos.js";
+import { CreateLoremBodyDto, GetSomethingQueryDto } from "./lorems.dtos.js";
 import { LoremEntity } from "./lorems.entity.js";
 
 @Injectable()
@@ -27,14 +27,16 @@ export class LoremsService {
 		return lorem;
 	}
 
-	public async getSomething(): Promise<Something> {
+	public async getSomething(getSomethingQueryDto: GetSomethingQueryDto): Promise<Something> {
 		const [lorems, loremsAmount] = await this.loremsRepository.findAndCount({
 			select: {
 				id: true,
 				name: true,
 			},
 			// relations: {},
-			// where: {},
+			where: {
+				description: getSomethingQueryDto.description,
+			},
 			// order: {},
 			// skip: 0,
 			// take: 10_000,
