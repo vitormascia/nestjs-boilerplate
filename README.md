@@ -107,6 +107,7 @@ src/
 ├── migrations/
 ├── modules/
 │   ├── app/
+│   ├── cache/
 │   ├── health_check/
 │   ├── lorems/
 │   ├── redis/
