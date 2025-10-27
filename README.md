@@ -6,7 +6,7 @@
 
 # 📦 NestJS Boilerplate
 
-This repository contains the implementation of the **Backend Development Hands-On Test**. The goal is to build a simple core system for an REST API.
+This repository contains the implementation of a **NestJS Boilerplate**. The goal is to build a simple core system for an REST API.
 
 ## 🎛️ Running the app
 
