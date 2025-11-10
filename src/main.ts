@@ -2,6 +2,7 @@ import helmet from "@fastify/helmet";
 import {
 	ConsoleLogger,
 	Logger,
+	NestApplicationOptions,
 	ValidationPipe,
 } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
@@ -24,26 +25,28 @@ async function bootstrap(): Promise<void> {
 		maxParamLength: 200,
 	});
 
+	const options: NestApplicationOptions = {
+		rawBody: true,
+		logger: new ConsoleLogger({
+			logLevels: [
+				"debug",
+				"log",
+				"verbose",
+				"warn",
+				"error",
+				"fatal",
+			],
+			prefix: "NestJSBoilerplate",
+			timestamp: true,
+			colors: true,
+			sorted: true,
+		}),
+	};
+
 	const app = await NestFactory.create<NestFastifyApplication>(
 		AppModule,
 		fastifyAdapter,
-		{
-			rawBody: true,
-			logger: new ConsoleLogger({
-				logLevels: [
-					"debug",
-					"log",
-					"verbose",
-					"warn",
-					"error",
-					"fatal",
-				],
-				prefix: "NestJSBoilerplate",
-				timestamp: true,
-				colors: true,
-				sorted: true,
-			}),
-		},
+		options,
 	);
 
 	app.useGlobalFilters(new HttpExceptionFilter());
