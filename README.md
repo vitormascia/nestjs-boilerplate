@@ -1,8 +1,8 @@
-![Node.js](https://img.shields.io/badge/node-24.8.0-green.svg)
-![TypeScript](https://img.shields.io/badge/typescript-^5.9.2-blue.svg)
-![@nestjs/core](https://img.shields.io/badge/@nestjs/core-^11.1.6-red.svg)
+![Node.js](https://img.shields.io/badge/node-25.2.0-green.svg)
+![TypeScript](https://img.shields.io/badge/typescript-^5.9.3-blue.svg)
+![@nestjs/core](https://img.shields.io/badge/@nestjs/core-^11.1.9-red.svg)
 ![@nestjs/cli](https://img.shields.io/badge/@nestjs/cli-^11.0.10-red.svg)
-![Jest](https://img.shields.io/badge/jest-^30.1.3-purple.svg)
+![Jest](https://img.shields.io/badge/jest-^30.2.0-purple.svg)
 
 # 📦 NestJS Boilerplate
 
