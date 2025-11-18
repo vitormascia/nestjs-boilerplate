@@ -1,4 +1,13 @@
 services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo_db
+    environment:
+      MONGO_INITDB_DATABASE: nest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
   postgres:
     image: postgres:latest
     container_name: postgres_db
@@ -18,3 +27,4 @@ services:
 
 volumes:
   pgdata:
+  mongo_data:

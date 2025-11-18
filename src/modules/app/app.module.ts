@@ -13,6 +13,7 @@ import {
 	APP_GUARD,
 	APP_INTERCEPTOR,
 } from "@nestjs/core";
+import { MongooseModule } from "@nestjs/mongoose";
 import {
 	seconds,
 	ThrottlerGuard,
@@ -91,6 +92,50 @@ import configuration from "./app.configuration.js";
 		// 		limit: 100,
 		// 	},
 		// ]),
+		MongooseModule.forRoot("mongodb://127.0.0.1:27017/nest", {
+			/* RELIABILITY & FAILOVER */
+			/*
+				How long the driver waits to find a server before erroring.
+				Default is 30000 (30s). Lower this to 5000ms (5s) to fail fast
+				in microservices/Kubernetes so pods restart quickly rather than hang.
+			*/
+			serverSelectionTimeoutMS: 5000,
+			/*
+				Close sockets after inactivity to prevent "hanging" connections
+				behind load balancers/firewalls.
+			*/
+			socketTimeoutMS: 45000,
+			/*
+				Force IPv4. In many containerized envs (Docker/K8s), IPv6 lookup
+				delays can cause connection timeouts.
+			*/
+			family: 4,
+			/* PERFORMANCE & POOLING */
+			/* Maintain a minimum number of connections to avoid "cold start" latency. */
+			minPoolSize: 10,
+			/*
+				Cap the pool to prevent one instance from overwhelming the DB.
+				Default is 100. Adjust based on your instance count
+				(e.g. 4 instances * 50 = 200 connections).
+			*/
+			maxPoolSize: 100,
+			/*
+				Turn OFF automatic index creation in production.
+				Index builds can lock collections and slow down startup.
+				deployment scripts or migrations should handle indexing.
+			*/
+			autoIndex: true,
+			/* DATA SAFETY & CONSISTENCY */
+			/*
+				Ensure writes are acknowledged by the majority of replica set members.
+				Crucial for data durability (prevents rollbacks during failovers).
+			*/
+			w: "majority",
+			/* NESTJS SPECIFIC OPTIONS (NOT MONGOOSE DRIVER OPTIONS) */
+			/* These control how NestJS handles the initial connection attempt. */
+			retryAttempts: 5,
+			retryDelay: 1000,
+		}),
 		TypeOrmModule.forRootAsync({
 			imports: [ConfigModule],
 			inject: [ConfigService],
@@ -112,11 +157,11 @@ import configuration from "./app.configuration.js";
 				],
 				migrationsRun: true,
 				/*
-					- Behavior: Each migration runs in its own transaction
-					- Pros: Migrations can override transaction = false safely (which is needed for
-					the creation of DB Indexes)
-					- Cons: Partial changes if one migration fails (earlier ones aren’t rolled back)
-				*/
+- Behavior: Each migration runs in its own transaction
+- Pros: Migrations can override transaction = false safely (which is needed for
+the creation of DB Indexes)
+- Cons: Partial changes if one migration fails (earlier ones aren’t rolled back)
+*/
 				migrationsTransactionMode: "each",
 				synchronize: !(config.get("app.environment", { infer: true }) === "production"),
 				retryAttempts: 10,
