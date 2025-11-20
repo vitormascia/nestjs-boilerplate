@@ -8,7 +8,7 @@
 	"main": "./build/main.js",
 	"license": "UNLICENSED",
 	"engines": {
-		"node": "^25.2.1"
+		"node": "24.11.1"
 	},
 	"scripts": {
 		"verify": "npm run ts:compile && npm run lint:fix",
@@ -25,7 +25,7 @@
 		"ts:check": "tsc --noEmit true --pretty",
 		"test": "jest --detectOpenHandles --runInBand --logHeapUsage",
 		"test:watch": "jest --watch",
-		"test:cov": "jest --coverage",
+		"test:coverage": "jest --coverage",
 		"typeorm": "tsx ./node_modules/typeorm/cli",
 		"typeorm:run-migrations": "rimraf build && npm run build && npm run typeorm migration:run -- -d ./src/connections/typeorm.connections.ts",
 		"typeorm:generate-migration": "rimraf build && npm run build && npm run typeorm -- -d ./src/connections/typeorm.connections.ts migration:generate ./src/migrations/${npm_config_name:-$(git branch --show-current)}",
@@ -104,6 +104,7 @@
 		"ts-loader": "^9.5.4",
 		"tsconfig-paths": "^4.2.0",
 		"tsx": "^4.20.6",
+		"ts-node": "^10.9.2",
 		"typescript": "^5.9.3",
 		"typescript-eslint": "^8.47.0"
 	}

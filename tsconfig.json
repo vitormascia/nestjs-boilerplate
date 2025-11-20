@@ -1,20 +1,21 @@
 {
 	"type": "module",
-	"include": ["**/*.ts"],
+	"include": ["src/**/*.ts"],
 	"exclude": [
 		"build",
 		"node_modules",
-		"**/*.test.ts"
+		"tests/**/*.test.ts",
+		"tests/**/*.mock.ts"
 	],
  	"compileOnSave": true,
 	"compilerOptions": {
-		"target": "ES2024",
-		"module": "NodeNext",
-		"moduleResolution": "NodeNext",
+		"target": "ESNext",
+		"module": "ESNext",
+		"moduleResolution": "Bundler",
 		"allowImportingTsExtensions": false,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
-		"resolveJsonModule": true,
+		"resolveJsonModule": false,
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"noUnusedLocals": true,
@@ -24,8 +25,8 @@
 		"strictPropertyInitialization": false,
 		"declaration": true,
 		"sourceMap": true,
-		"rootDir": "./src",
-		"outDir": "./build",
+		"rootDir": "src",
+		"outDir": "build",
 		"skipLibCheck": true,
 		"noEmit": false,
 		"emitDeclarationOnly": false,

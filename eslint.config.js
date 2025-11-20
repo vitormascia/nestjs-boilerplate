@@ -8,7 +8,7 @@ import ymlPlugin from "eslint-plugin-yml";
 
 export default [
 	{
-		files: ["**/*.ts"],
+		files: ["src/**/*.ts"],
 		languageOptions: {
 			ecmaVersion: 2024,
 			sourceType: "module",
@@ -151,7 +151,7 @@ export default [
 		},
 	},
 	{
-		files: ["**/*.test.ts"],
+		files: ["tests/**/*.test.ts", "tests/**/*.mock.ts"],
 		languageOptions: {
 			ecmaVersion: 2024,
 			sourceType: "module",
@@ -321,15 +321,15 @@ export default [
 		ignores: [
 			"build",
 			"node_modules",
+			"coverage",
 			"*.env",
 			"**/*.d.ts",
 			"package.json",
 			"package-lock.json",
 			"docker-compose.yml",
-			"jest.config.json",
+			"jest.config.*",
 			"nest-cli.json",
-			"tsconfig.json",
-			"tsconfig.test.json",
+			"tsconfig*.json",
 			".vscode/**",
 		],
 	},

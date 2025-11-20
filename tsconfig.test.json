@@ -1,4 +1,12 @@
 {
-	"extends": "./tsconfig.json",
-	"include": ["**/*.test.ts"]
+  "extends": "./tsconfig.json",
+  "include": [
+    "jest.config.ts",
+    "tests/**/*.test.ts",
+    "tests/**/*.mock.ts"
+  ],
+  "exclude": [
+    "build",
+    "node_modules"
+  ]
 }

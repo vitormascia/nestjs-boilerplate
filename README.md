@@ -1,4 +1,4 @@
-![Node.js](https://img.shields.io/badge/node-25.2.1-green.svg)
+![Node.js](https://img.shields.io/badge/node-24.11.1-green.svg)
 ![TypeScript](https://img.shields.io/badge/typescript-^5.9.3-blue.svg)
 ![@nestjs/core](https://img.shields.io/badge/@nestjs/core-^11.1.9-red.svg)
 ![@nestjs/cli](https://img.shields.io/badge/@nestjs/cli-^11.0.10-red.svg)
