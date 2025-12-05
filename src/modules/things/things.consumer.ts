@@ -11,6 +11,7 @@ import { InjectEntityManager } from "@nestjs/typeorm";
 import { EntityManager } from "typeorm";
 import { IsolationLevel } from "typeorm/driver/types/IsolationLevel.js";
 
+import { normalizeError } from "../../utils/error.utils.js";
 import { QueueName } from "../app/@types/queues.enums.js";
 import { ThingJob } from "./@types/things.types.js";
 import { ThingLocksService } from "./locks.service.js";
@@ -133,10 +134,7 @@ export class ThingsConsumer extends WorkerHost {
 	public async onFailed(job: ThingJob, error: Error, prev: string): Promise<void> {
 		this.logJob("JOB::ON_FAILED", job, "error", {
 			prev,
-			error: {
-				message: error.message,
-				stack: error.stack,
-			},
+			error: normalizeError(error),
 		});
 
 		const { thingId } = job.data;

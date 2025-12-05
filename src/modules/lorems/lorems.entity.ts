@@ -1,8 +1,4 @@
-import {
-	Column,
-	Entity,
-	PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 import { LoremRole } from "../../guards/@types/roles.enums.js";
 import { AbstractEntity } from "../app/base.entity.js";

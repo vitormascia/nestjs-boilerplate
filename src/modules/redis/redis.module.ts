@@ -1,10 +1,8 @@
-import {
-	Logger,
-	Module,
-} from "@nestjs/common";
+import { Logger, Module } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { Redis } from "ioredis";
 
+import { normalizeError } from "../../utils/error.utils.js";
 import { AppConfig } from "../app/@types/app.interfaces.js";
 
 @Module({
@@ -24,12 +22,7 @@ import { AppConfig } from "../app/@types/app.interfaces.js";
 				});
 
 				redis.on("error", (error: Error): void => {
-					logger.error("REDIS_ERROR", {
-						name: error.name,
-						cause: error.cause,
-						message: error.message,
-						stack: error.stack,
-					});
+					logger.error("REDIS_ERROR", { ...normalizeError(error) });
 				});
 
 				return redis;

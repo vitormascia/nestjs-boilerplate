@@ -1,8 +1,4 @@
-import {
-	AxiosError,
-	AxiosResponse,
-	InternalAxiosRequestConfig,
-} from "axios";
+import { AxiosError, AxiosResponse, InternalAxiosRequestConfig } from "axios";
 
 export type OnFulfilledRequestInterceptor =
 	| ((
@@ -15,3 +11,10 @@ export type OnFulfilledResponseInterceptor =
 	| null;
 
 export type OnRejectedResponseInterceptor = ((error: AxiosError) => AxiosError) | null;
+
+export type Err = {
+	cause?: unknown;
+	message: string;
+	name: string;
+	stack?: string;
+}

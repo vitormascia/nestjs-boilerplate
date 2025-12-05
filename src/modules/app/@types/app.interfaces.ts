@@ -20,6 +20,13 @@ export interface AppConfig {
 			password: string;
 			database: string;
 		};
+		mongodb: {
+			host: string;
+			port: string;
+			username: string;
+			password: string;
+			database: string;
+		};
 		redis: {
 			host: string;
 			port: number;
@@ -28,9 +35,16 @@ export interface AppConfig {
 			};
 		};
 	};
-	exampleAPI: {
-		baseURL: string;
-		key: string;
-		requestTimeout: number;
-	}
+	apis: {
+		exampleAPI: {
+			baseURL: string;
+			key: string;
+			requestTimeoutInSeconds: number;
+		};
+		buenroMaterialsAPI: {
+			baseURL: string;
+			requestTimeoutInMilliseconds: number;
+			retryAttempts: number;
+		};
+	};
 }

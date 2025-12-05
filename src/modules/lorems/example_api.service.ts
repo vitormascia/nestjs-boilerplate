@@ -9,11 +9,11 @@ import { AppConfig } from "../app/@types/app.interfaces.js";
 export class ExampleApiService extends AxiosApi {
 	constructor(readonly configService: ConfigService<AppConfig, true>) {
 		super({
-			baseURL: configService.get("exampleAPI.baseURL", { infer: true }),
-			timeout: ms(`${configService.get("exampleAPI.requestTimeout", { infer: true })} Seconds`),
+			baseURL: configService.get("apis.exampleAPI.baseURL", { infer: true }),
+			timeout: ms(`${configService.get("apis.exampleAPI.requestTimeoutInSeconds", { infer: true })} Seconds`),
 			headers: {
 				"Content-Type": "application/json",
-				Authorization: `Bearer ${configService.get("exampleAPI.key", { infer: true })}`,
+				Authorization: `Bearer ${configService.get("apis.exampleAPI.key", { infer: true })}`,
 			},
 		});
 	}

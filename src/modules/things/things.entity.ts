@@ -1,8 +1,4 @@
-import {
-	Column,
-	Entity,
-	PrimaryGeneratedColumn,
-} from "typeorm";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 import { AbstractEntity } from "../app/base.entity.js";
 import { Thing } from "./@types/things.types.js";

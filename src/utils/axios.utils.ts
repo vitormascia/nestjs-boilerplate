@@ -9,15 +9,10 @@ import axios, {
 import axiosRetry, { IAxiosRetryConfig } from "axios-retry";
 import BigNumber from "bignumber.js";
 import { ClientRequest } from "http";
-import _ from "lodash";
 
 import { EMPTY_STRING } from "../constants/symbols.constants.js";
 import time from "../constants/time.constants.js";
-import {
-	OnFulfilledRequestInterceptor,
-	OnFulfilledResponseInterceptor,
-	OnRejectedResponseInterceptor,
-} from "./@types/util.types.js";
+import { OnFulfilledRequestInterceptor, OnFulfilledResponseInterceptor, OnRejectedResponseInterceptor } from "./@types/util.types.js";
 
 export abstract class AxiosApi {
 	protected readonly logger = new Logger(this.constructor.name);

@@ -1,7 +1,4 @@
-import {
-	CustomDecorator,
-	SetMetadata,
-} from "@nestjs/common";
+import { CustomDecorator, SetMetadata } from "@nestjs/common";
 
 import { LoremRole } from "../guards/@types/roles.enums.js";
 

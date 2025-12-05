@@ -1,13 +1,11 @@
-import {
-	Controller,
-	Get,
-} from "@nestjs/common";
+import { Controller, Get } from "@nestjs/common";
 import {
 	HealthCheck,
 	HealthCheckResult,
 	HealthCheckService,
 	HealthIndicatorResult,
 	HttpHealthIndicator,
+	MongooseHealthIndicator,
 	TypeOrmHealthIndicator,
 } from "@nestjs/terminus";
 
@@ -16,15 +14,17 @@ export class HealthController {
 	constructor(
 		private health: HealthCheckService,
 		private http: HttpHealthIndicator,
-		private db: TypeOrmHealthIndicator,
+		private typeORM: TypeOrmHealthIndicator,
+		private mongoose: MongooseHealthIndicator,
 	) { }
 
 	@Get()
 	@HealthCheck()
 	public check(): Promise<HealthCheckResult> {
 		return this.health.check([
-			(): Promise<HealthIndicatorResult<string>> => this.db.pingCheck("database"),
 			(): Promise<HealthIndicatorResult<string>> => this.http.pingCheck("nestjs-docs", "https://docs.nestjs.com"),
+			(): Promise<HealthIndicatorResult<string>> => this.typeORM.pingCheck("typeORM"),
+			(): Promise<HealthIndicatorResult<string>> => this.mongoose.pingCheck("mongoose"),
 		]);
 	}
 }

@@ -110,6 +110,10 @@ export default [
 					},
 				},
 			],
+			"object-property-newline": [
+				"error",
+				{ allowAllPropertiesOnSameLine: false },
+			],
 			"array-element-newline": ["error", "consistent"],
 			"function-paren-newline": ["error", "multiline"],
 			"newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }],

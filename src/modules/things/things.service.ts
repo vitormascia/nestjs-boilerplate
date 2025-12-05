@@ -1,22 +1,13 @@
 
 import { InjectQueue } from "@nestjs/bullmq";
-import {
-	Injectable,
-	Logger,
-	NotFoundException,
-} from "@nestjs/common";
+import { Injectable, Logger, NotFoundException } from "@nestjs/common";
 import { Queue } from "bullmq";
-import _ from "lodash";
 import { EntityManager } from "typeorm";
 import { v4 as uuidv4 } from "uuid";
 
 import { QueueName } from "../app/@types/queues.enums.js";
 import { ThingJobData } from "./@types/things.interfaces.js";
-import {
-	CreateThing,
-	Thing,
-	UpdateThing,
-} from "./@types/things.types.js";
+import { CreateThing, Thing, UpdateThing } from "./@types/things.types.js";
 import { ThingLocksService } from "./locks.service.js";
 import { ThingEntity } from "./things.entity.js";
 

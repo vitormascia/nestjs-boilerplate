@@ -1,9 +1,6 @@
 import { Job } from "bullmq";
 
-import {
-	PlainProperties,
-	StrictRequired,
-} from "../../../helpers/types.helpers.js";
+import { PlainProperties, StrictRequired } from "../../../helpers/types.helpers.js";
 import { ThingEntity } from "../things.entity.js";
 import { ThingJobData } from "./things.interfaces.js";
 

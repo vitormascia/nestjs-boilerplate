@@ -1,12 +1,5 @@
-import {
-	Cache,
-	CACHE_MANAGER,
-} from "@nestjs/cache-manager";
-import {
-	Inject,
-	Injectable,
-	Logger,
-} from "@nestjs/common";
+import { Cache, CACHE_MANAGER } from "@nestjs/cache-manager";
+import { Inject, Injectable, Logger } from "@nestjs/common";
 import ms from "ms";
 
 import { EMPTY_STRING } from "../../constants/symbols.constants.js";
