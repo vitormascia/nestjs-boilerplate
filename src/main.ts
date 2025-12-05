@@ -109,8 +109,8 @@ async function bootstrap(): Promise<void> {
 		{
 			ui: true,
 			explorer: true,
-			customSiteTitle: "CUSTOM EXAMPLE",
-			jsonDocumentUrl: "/swagger/docs",
+			customSiteTitle: "NestJS Boilerplate",
+			jsonDocumentUrl: "/swagger/json",
 			raw: ["json"],
 		},
 	);
